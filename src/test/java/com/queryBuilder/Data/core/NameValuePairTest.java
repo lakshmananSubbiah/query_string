@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
-import com.queryBuilder.Data.code.NameValuePair;
+import com.queryBuilder.Data.core.NameValuePair;
 
 /**
  * 

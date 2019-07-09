@@ -1,6 +1,6 @@
 package query_strings.query_strings;
 
-import com.queryBuilder.Data.code.NameValuePair;
+import com.queryBuilder.Data.core.NameValuePair;
 
 /**
  * Hello world!

@@ -1,4 +1,4 @@
-package com.queryBuilder.Data.code;
+package com.queryBuilder.Data.core;
 
 /**
  * 
