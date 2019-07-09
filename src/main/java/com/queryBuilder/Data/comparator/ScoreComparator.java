@@ -16,9 +16,9 @@ public class ScoreComparator implements Comparator<NameValuePair> {
 	@Override
 	public int compare(NameValuePair o1, NameValuePair o2) {
 		 if(o1.getScore()>o2.getScore()){
-	            return 1;
-	        } else {
 	            return -1;
+	        } else {
+	            return 1;
 	        }
 	}
 }
