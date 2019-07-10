@@ -1,5 +1,6 @@
 package com.queryBuilder.Data.retrievalBuilder;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -12,7 +13,18 @@ import com.queryBuilder.Data.constants.QueryBuilderConstants;
  *  Also known as Dictionary Data Structure.
  *  This is the data structure used to retrieve all the texts from the given prefix
  */
-public class Trie {
+public class Trie implements Serializable {
+	/**
+	 * 
+	 */
+	
+	TrieNode root;
+	
+	Trie(){
+		root = new TrieNode();
+	}
+	
+	private static final long serialVersionUID = 192827382L;
 	static final int MAX_ALPHABET_SIZE = 52;
 	
 	static class TrieNode{
@@ -28,9 +40,9 @@ public class Trie {
 		}
 	}
 	
-	static TrieNode root;
 	
-	static void insert(String key) {
+	
+	public void insert(String key) {
 		
 		int length = key.length();
 		Integer index;
@@ -50,7 +62,10 @@ public class Trie {
 		crawl.isEndOfWord = true;
 	}
 	
-	static Set<String> search(String key) {
+	public Set<String> search(String key) {
+		if(key == null) {
+			throw new RuntimeException("search word cannot be null.");
+		}
 		Set<String> stringSet = new HashSet<String>();
 		int length = key.length();
 		Integer index;
@@ -72,7 +87,7 @@ public class Trie {
 		return stringSet;
 	}
 	
-	private static Set<String> findAllSubSets(String currentText, TrieNode pCrawl, Set<String> stringSet) {
+	public static Set<String> findAllSubSets(String currentText, TrieNode pCrawl, Set<String> stringSet) {
 		
 		for(int i=0;i<MAX_ALPHABET_SIZE;i++) {
 			if(pCrawl.children[i] != null) {
