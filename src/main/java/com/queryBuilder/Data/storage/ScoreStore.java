@@ -79,10 +79,8 @@ public class ScoreStore {
 		int count = 0;
 		while(it.hasNext() && count < 10) {
 			NameValuePair pair = it.next();
-			if(!set.contains(pair)) {
-				set.add(pair);
-				count ++;
-			}
+			set.add(pair);
+			count ++;
 		}
 		return set;
 	}
