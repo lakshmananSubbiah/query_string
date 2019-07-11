@@ -26,7 +26,7 @@ class Trietest {
 	
 	@BeforeAll
 	static void initializeTriewithRandomStrings() {
-		for(int i = 0;i< 100000; i++) {
+		for(int i = 0;i< 1000000; i++) {
 			Random random = new Random();
 			int length = random.nextInt(7);
 			StringBuilder builder  = new StringBuilder();
@@ -86,5 +86,16 @@ class Trietest {
 			trie.search(null);
 		});
 		assertThat(exception.getMessage(),equalTo("Not a character"));
+	}
+	
+	@Test
+	void testTrieWithEmptyString() {
+		trie.insert("sam");
+		trie.insert("sammu");
+		Set<String> set = trie.search("");
+		System.out.println(set.size());
+		if(set.size()<100) {
+			fail("Error on retrieving");
+		}
 	}
 }

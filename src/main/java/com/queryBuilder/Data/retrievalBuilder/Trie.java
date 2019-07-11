@@ -20,7 +20,7 @@ public class Trie implements Serializable {
 	
 	TrieNode root;
 	
-	Trie(){
+	public Trie(){
 		root = new TrieNode();
 	}
 	
