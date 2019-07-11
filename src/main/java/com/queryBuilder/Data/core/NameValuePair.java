@@ -34,5 +34,36 @@ public class NameValuePair {
 		return this.name.split("_");
 	}
 	
+	@Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+
+        if (!NameValuePair.class.isAssignableFrom(obj.getClass())) {
+            return false;
+        }
+
+        final NameValuePair other = (NameValuePair) obj;
+        if ((this.getName() == null) ? (other.getName() != null) : !this.getName().equals(other.getName())) {
+            return false;
+        }
+
+        if (this.getScore() != other.getScore()) {
+            return false;
+        }
+
+        return true;
+    }
+	
+	@Override
+	public int hashCode() {
+		return this.getName().hashCode()+score;
+	}
+	
+	@Override
+	public String toString() {
+		return "Name: "+this.getName()+" Score: "+this.getScore();
+	}
 	
 }

@@ -78,8 +78,11 @@ public class ScoreStore {
 		Iterator<NameValuePair> it  = st.iterator();
 		int count = 0;
 		while(it.hasNext() && count < 10) {
-			set.add(it.next());
-			count ++;
+			NameValuePair pair = it.next();
+			if(!set.contains(pair)) {
+				set.add(pair);
+				count ++;
+			}
 		}
 		return set;
 	}
