@@ -26,8 +26,8 @@ class Trietest {
 	
 	@BeforeAll
 	static void initializeTriewithRandomStrings() {
-		for(int i = 0;i< 1000000; i++) {
-			Random random = new Random();
+		Random random = new Random();
+		for(int i = 0;i< 10000000; i++) {
 			int length = random.nextInt(7);
 			StringBuilder builder  = new StringBuilder();
 			for(int j = 0;j<length;j++) {
