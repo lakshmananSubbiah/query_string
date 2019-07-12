@@ -1,5 +1,7 @@
 package com.queryBuilder.Data.core;
 
+import java.io.Serializable;
+
 /**
  * 
  * @author Lakshmanan Subbiah
@@ -7,7 +9,12 @@ package com.queryBuilder.Data.core;
  * This class holds the Name and Score of individual data.
  * This class will be used in the comparision.
  */
-public class NameValuePair {
+public class NameValuePair implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8890149322543527279L;
 
 	private String name;
 	

@@ -1,5 +1,6 @@
 package com.queryBuilder.Data.storage;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
@@ -18,9 +19,14 @@ import com.queryBuilder.Data.core.NameValuePair;
  * This class will store the core map structure which contains the parts of the string and the 
  * Name and score associated with that string
  */
-public class ScoreStore {
+public class ScoreStore implements Serializable {
 
-	 Map<String,SortedSet<NameValuePair>> store = new HashMap<String,SortedSet<NameValuePair>>();
+	 /**
+	 * 
+	 */
+	private static final long serialVersionUID = -5320774370053691692L;
+
+	Map<String,SortedSet<NameValuePair>> store = new HashMap<String,SortedSet<NameValuePair>>();
 	
 	static final ScoreComparator sc = new ScoreComparator();
 	

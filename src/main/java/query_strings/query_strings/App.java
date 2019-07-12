@@ -1,8 +1,15 @@
 package query_strings.query_strings;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.Set;
 
 import com.queryBuilder.Data.Query.QueryTool;
@@ -16,7 +23,7 @@ import com.queryBuilder.Data.core.NameValuePair;
  */
 public class App 
 {
-    public static void main( String[] args ) throws  IOException
+    public static void main( String[] args ) throws  IOException, ClassNotFoundException
     {
     	try {
     		QueryTool queryTool = new QueryTool();
@@ -37,9 +44,9 @@ public class App
 	        		case 2:
 	        			getNameValuePairsFromUsers(br,queryTool);
 	        			break;
-	        		case 3:
+	        		case 3: queryTool = loadFromFile(br);
 	        			break;
-	        		case 4:
+	        		case 4: storeCurrentTreeInAFile(br,queryTool);
 	        			break;
 	        		case 5:
 	        			searchForaPrefix(br,queryTool);
@@ -57,9 +64,40 @@ public class App
     	}
     }
 
-	private static void getValueFromFile(BufferedReader br, QueryTool queryTool) {
+	private static QueryTool loadFromFile(BufferedReader br) throws IOException, ClassNotFoundException {
 		System.out.println("Enter the absolute path of file");
-		
+		String absolutePath = br.readLine();
+		FileInputStream fi = new FileInputStream(new File(absolutePath));
+		ObjectInputStream oi = new ObjectInputStream(fi);
+		QueryTool queryTool = (QueryTool) oi.readObject();
+		fi.close();
+		oi.close();
+		return queryTool;
+	}
+
+	private static void storeCurrentTreeInAFile(BufferedReader br, QueryTool queryTool) throws IOException {
+		FileOutputStream fout = null;
+		ObjectOutputStream oos = null;
+		System.out.println("Enter the absolute path of file");
+		String absolutePath = br.readLine();
+		fout = new FileOutputStream(new File(absolutePath));
+		oos = new ObjectOutputStream(fout);
+		oos.writeObject(queryTool);
+		fout.close();
+		oos.close();
+		System.out.println("Stored successfully");
+	}
+
+	private static void getValueFromFile(BufferedReader br, QueryTool queryTool) throws IOException {
+		System.out.println("Enter the absolute path of file");
+		String absolutePath = br.readLine();
+		File file = new File(absolutePath);
+		BufferedReader fileReader = new BufferedReader(new FileReader(file));
+		String str;
+		while ((str = fileReader.readLine()) != null) {
+			queryTool.insert(str.split(",")[0], Integer.parseInt(str.split(",")[1]));
+		} 
+		fileReader.close();
 	}
 
 	private static void searchForaPrefix(BufferedReader br, QueryTool queryTool) throws IOException {

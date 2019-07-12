@@ -17,6 +17,10 @@ public class Trie implements Serializable {
 	/**
 	 * 
 	 */
+	private static final long serialVersionUID = 5505988570597885915L;
+	/**
+	 * 
+	 */
 	
 	TrieNode root;
 	
@@ -24,10 +28,14 @@ public class Trie implements Serializable {
 		root = new TrieNode();
 	}
 	
-	private static final long serialVersionUID = 192827382L;
 	static final int MAX_ALPHABET_SIZE = 52;
 	
-	static class TrieNode{
+	static class TrieNode implements Serializable{
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = -459273482079883335L;
+
 		TrieNode[] children = new TrieNode[MAX_ALPHABET_SIZE];
 		
 		boolean isEndOfWord;

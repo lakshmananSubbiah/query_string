@@ -1,5 +1,6 @@
 package com.queryBuilder.Data.comparator;
 
+import java.io.Serializable;
 import java.util.Comparator;
 
 import com.queryBuilder.Data.core.NameValuePair;
@@ -11,7 +12,12 @@ import com.queryBuilder.Data.core.NameValuePair;
  *   Comparator Class That will be useful in ordering the Names and scores based on Scores
  *
  */
-public class ScoreComparator implements Comparator<NameValuePair> {
+public class ScoreComparator implements Comparator<NameValuePair>, Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4540434977936495729L;
 
 	@Override
 	public int compare(NameValuePair o1, NameValuePair o2) {
